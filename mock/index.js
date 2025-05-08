@@ -12,9 +12,11 @@ export default [
   {
     url: "/list",
     method: "get",
-    response: () => {
-      return arr;
-    },
+    response: () => ({
+      code: 1000,
+      data: arr,
+      msg: "success",
+    }),
   },
   {
     url: "/del/:id",
@@ -47,7 +49,6 @@ export default [
     url: "/userInfo",
     method: "post",
     response: ({ body }) => {
-      arr.push(body);
       return {
         success: true,
         code: 1000,

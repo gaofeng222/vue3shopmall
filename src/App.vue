@@ -2,14 +2,17 @@
 import Edit from './components/Edit.vue'
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
+import  {userState} from '@/store/modules/userStore'
+import { storeToRefs } from 'pinia'
+//
+const store = userState()
+const { loading,dataList } = storeToRefs(store)
+const {fetchData} = store
+
+// const { getDataList, dataList, loading } = store
 
 // TODO:列表渲染
-const list = ref([])
-const getList = async () => {
-  const res = await axios.get("/list")
-  list.value = res.data
-}
-onMounted(() => getList())
+onMounted(() => fetchData())
 
 // TODO:删除功能
 
@@ -26,7 +29,7 @@ const openDialog = (item) => {
 
 // 更新列表
 const updateList = () => {
-  getList()
+  fetchData()
 }
 
 
@@ -42,11 +45,17 @@ onMounted(() => {
 })
 
 
+
+
+
+
+
+
 </script>
 
 <template>
   <div class="app">
-    <el-table :data="list">
+    <el-table :data="dataList" v-loading="loading">
       <el-table-column label="ID" prop="id"></el-table-column>
       <el-table-column label="姓名" prop="name" width="150"></el-table-column>
       <el-table-column label="籍贯" prop="place"></el-table-column>
