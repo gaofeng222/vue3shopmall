@@ -30,6 +30,18 @@ const updateList = () => {
 }
 
 
+onMounted(() => {
+  axios.post("/userInfo",{
+     name:"张三",
+      age:20,
+      sex:'男',
+      hobby:['篮球','足球']
+  }).then(res => {
+    console.log(res)
+  })
+})
+
+
 </script>
 
 <template>
