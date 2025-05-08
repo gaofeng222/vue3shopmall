@@ -26,7 +26,7 @@ export default defineConfig({
     preprocessorOptions: {
       // 自定义主题色
       scss: {
-        // additionalData: `@use "@a/styles/index.scss" as *;`,
+        additionalData: `@use "@a/styles/var.scss" as *;`,
       },
     },
   },

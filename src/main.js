@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import setupStore from "./store";
 import createRouter from "./router";
+import "@a/styles/common.scss";
 
 // 自定义主题样式文件
 import "@a/styles/element-plus/index.scss";
