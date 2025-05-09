@@ -1,10 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import {getList} from '@/apis/test'
-onMounted(async () => {
-  const res = await getList()
-  console.log(res)
-})
+
 </script>
 
 <template>
@@ -13,6 +8,6 @@ onMounted(async () => {
   </div>
 </template>
 
-<style scoped>
-
+<style scoped lang="scss">
+ @import url("http://at.alicdn.com/t/font_2143783_iq6z4ey5vu.css");
 </style>
