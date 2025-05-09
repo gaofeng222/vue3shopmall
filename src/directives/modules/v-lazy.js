@@ -1,5 +1,6 @@
 import { ref } from "vue";
 import { useIntersectionObserver } from "@vueuse/core";
+import loading from "@a/images/loading.gif";
 
 const vLazyImg = {
   name: "lazy-img",
@@ -16,6 +17,8 @@ const vLazyImg = {
           el.src = bingding.value;
           // 优化性能，停止监听
           stop();
+        } else {
+          el.src = loading;
         }
       }
     );

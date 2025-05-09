@@ -17,11 +17,11 @@
 import { ref, onMounted,inject } from 'vue'
 import HomePanel from './HomePanel.vue'
 import { getNewLists } from '@/apis/category'
-
 const newList = ref([])
 
 onMounted(async () => {
     const res = await getNewLists()
+    // 
     newList.value = res.result
 })
 
