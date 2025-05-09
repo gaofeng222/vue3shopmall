@@ -1,6 +1,8 @@
 import { createApp } from "vue";
 import setupStore from "./store";
 import createRouter from "./router";
+import createDirectives from "./directives";
+import customPlugin from "./plugins";
 import "@a/styles/common.scss";
 
 // 自定义主题样式文件
@@ -19,5 +21,11 @@ setupStore(app);
 
 // 安装路由
 createRouter(app);
+
+// 注册全局指令
+createDirectives(app);
+
+// 注册自定义插件
+app.use(customPlugin);
 
 app.mount("#app");
