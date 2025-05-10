@@ -4,8 +4,8 @@ export const getCategoryList = () => {
   return http.get("home/category/head");
 };
 
-export const getBannerLists = () => {
-  return http.get("home/banner");
+export const getBannerLists = (params) => {
+  return http.get("home/banner", { params });
 };
 
 export const getNewLists = () => {
