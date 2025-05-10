@@ -3,7 +3,8 @@
     <LayoutHeader />
     <LayoutFixed />
     <div class="content-main">
-        <router-view></router-view>
+        <!-- 强制路由更新 -->
+        <router-view :key="$route.fullPath"></router-view>
     </div>
     <LayoutFooter />
 </template>

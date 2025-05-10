@@ -12,7 +12,7 @@ const vLazyImg = {
       target,
       ([{ isIntersecting }], observerElement) => {
         targetIsVisible.value = isIntersecting;
-        console.log("🚀 ~ isIntersecting:", isIntersecting);
+        // console.log("🚀 ~ isIntersecting:", isIntersecting);
         if (isIntersecting) {
           el.src = bingding.value;
           // 优化性能，停止监听
