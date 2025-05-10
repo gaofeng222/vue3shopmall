@@ -26,6 +26,11 @@ axios.patch(`/edit/${id}`, {
 });
 ```
 
+## 更改远程仓库地址的步骤
+
+- git remote -v // 查看远程仓库地址
+- git remote set-url origin 新地址 // 更改远程仓库地址
+
 ## 配置浏览器调试 pinia 工具的插件
 
 插件网站
