@@ -9,5 +9,5 @@
 </template>
 
 <style scoped lang="scss">
- @import url("http://at.alicdn.com/t/font_2143783_iq6z4ey5vu.css");
+ @import url("https://at.alicdn.com/t/font_2143783_iq6z4ey5vu.css");
 </style>
