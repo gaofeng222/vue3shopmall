@@ -3,7 +3,7 @@
        <home-panel v-for="item in goodsList" :key="item.id" :title="item.name">
         <div class="box">
             <router-link class="cover">
-                <img :src="item.picture">
+                <img v-lazy-img="item.picture">
                 <strong class="label">
                    <span> {{ item.name }}</span>
                    <span> {{ item.saleInfo }}</span>
