@@ -16,7 +16,7 @@
 <script setup>
 import { ref, onMounted,inject } from 'vue'
 import HomePanel from './HomePanel.vue'
-import { getNewLists } from '@/apis/category'
+import { getNewLists } from '@/apis/index'
 const newList = ref([])
 
 onMounted(async () => {

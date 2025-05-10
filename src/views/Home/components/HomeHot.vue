@@ -16,7 +16,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import HomePanel from './HomePanel.vue'
-import { getHotLists } from '@/apis/category'
+import { getHotLists } from '@/apis/index'
 
 const hotList = ref([])
 

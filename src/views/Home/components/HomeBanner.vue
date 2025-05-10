@@ -10,7 +10,7 @@
 
 <script setup>
 import { ref, onMounted } from "vue"
-import { getBannerLists } from "@/apis/category";
+import { getBannerLists } from "@/apis/index";
 
 const bannerList = ref([])
 

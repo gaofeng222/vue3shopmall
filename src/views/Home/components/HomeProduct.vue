@@ -3,7 +3,6 @@
        <home-panel v-for="item in goodsList" :key="item.id" :title="item.name">
         <div class="box">
             <router-link :to="`/detail/${item.id}`" class="cover">
-                4565656
                 <img v-lazy-img="item.picture">
                 <strong class="label">
                    <span> {{ item.name }}</span>
@@ -23,7 +22,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import HomePanel from './HomePanel.vue'
-import { getGoodsLists } from '@/apis/category'
+import { getGoodsLists } from '@/apis/index'
 import GoodsItems from './GoodsItem'
 
 const goodsList = ref([])

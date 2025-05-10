@@ -13,10 +13,18 @@ const routes = [
     children: [
       {
         path: "/home",
+        name: "home",
+        meta: {
+          title: "首页",
+        },
         component: Home,
       },
       {
-        path: "/category",
+        path: "/category/:id",
+        name: "category",
+        meta: {
+          title: "分类页",
+        },
         component: Catagory,
       },
     ],
