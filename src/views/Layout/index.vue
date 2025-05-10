@@ -5,6 +5,7 @@
     <div class="content-main">
         <!-- 强制路由更新 -->
         <router-view :key="$route.fullPath"></router-view>
+        <!-- <router-view></router-view> -->
     </div>
     <LayoutFooter />
 </template>

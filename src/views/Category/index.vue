@@ -39,8 +39,8 @@
     </div>
 </template> 
 <script setup>
-import {ref,onMounted, watch} from 'vue'
-import {useRoute} from 'vue-router'
+import {ref,onMounted, watch, onBeforeUpdate} from 'vue'
+import {onBeforeRouteUpdate, useRoute} from 'vue-router'
 import {categoryLists} from '@/apis/category'
 import GfBreadCrumb from '@c/gf-breadcrumb.vue'
 import {getBannerLists} from '@/apis'
@@ -50,15 +50,18 @@ import loading from "@a/images/loading.gif";
 const route = useRoute()
 const categoryListsData = ref([])
 const path = ref('')
-
-onMounted( ()=>{
-     getCategoryLists()
+ const { id } = route.params
+onMounted(()=>{
+     getCategoryLists(id)
      getBanner()
 })
 
+// onBeforeRouteUpdate((to)=>{
+//     getCategoryLists(to.params.id)
+// })
 
-async function getCategoryLists(){
-    const { id } = route.params
+
+async function getCategoryLists(id){
     const res = await categoryLists({id})
      categoryListsData.value = res.result
      path.value = res.result.name
@@ -89,6 +92,9 @@ async function getBanner(){
     .default-show{
         height:500px;
         position: relative;
+        img{
+            border: none;
+        }
         img:first-child{
             width: 100px;
             height: 100px;

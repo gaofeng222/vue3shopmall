@@ -5,9 +5,33 @@
     <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>兔鲜电商购物网站</title>
+    <style>
+        .loading{
+          position: absolute;
+          top:50%;
+          left:50%;
+          transform: translate3d(-50%,-50%,0);
+          text-align: center;
+        }
+        .loading-img{
+            background: url("./src/assets/images/loading.gif") no-repeat center;
+            width: 100px;
+            height: 100px;
+            background-size: 100% 100%;
+         }
+         .loading-text{
+            color: #999;
+            font-size: 12px;
+         }
+    </style>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div class="loading">
+        <div class="loading-img"></div>
+        <div class="loading-text">载入中,请稍后...</div>
+      </div>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
