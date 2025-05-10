@@ -20,8 +20,8 @@ const searchText = ref('')
                 <RouterLink to="/">小兔鲜</RouterLink>
             </h1>
             <ul class="app-header-nav">
-                <li class="home active">
-                    <RouterLink to="/">首页</RouterLink>
+                <li class="home">
+                    <RouterLink  to="/">首页</RouterLink>
                 </li>
                 <li class="home" v-for="item in categoryList" :key="item.id">
                     <RouterLink active-class="active" :to="`/category/${item.id}`">{{ item.name }}</RouterLink>
@@ -86,7 +86,7 @@ const searchText = ref('')
                 }
             }
 
-            &.active {
+            .active {
                 color: $xtxColor;
                 border-bottom: 1px solid $xtxColor;
             }

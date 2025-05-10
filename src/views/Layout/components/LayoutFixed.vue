@@ -23,7 +23,7 @@ const isShow = computed(() => {
             <RouterLink class="logo" to="/" />
             <!-- 导航区域 -->
             <ul class="app-header-nav">
-                <li class="home active">
+                <li class="home">
                     <RouterLink to="/">首页</RouterLink>
                 </li>
                 <li class="home" v-for="item in categoryList" :key="item.id">
