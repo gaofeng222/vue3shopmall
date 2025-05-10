@@ -20,10 +20,10 @@
             <h3>全部分类</h3>
             <ul>
                <li v-for="i in categoryListsData.children" :key="i.id">
-                  <RouterLink :to="`/category/sub/${i.id}`">
+                  <router-link :to="`/category/sub/${i.id}`">
                      <img v-lazy-img="i.picture" />
                      <p>{{ i.name }}</p>
-                  </RouterLink>
+                  </router-link>
                </li>
             </ul>
          </div>

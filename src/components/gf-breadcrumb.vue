@@ -4,7 +4,7 @@
     <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
         <TransitionGroup  name="fade" appear>
           <el-breadcrumb-item v-for="(item,index) in menuLists" :key="index">
-            <a v-if="item.path" :href="item.path">{{item.name}}</a>
+            <router-link v-if="item.path" :to="item.path">{{item.name}}</router-link>
             <span class="grey" v-else>{{item.name}}</span>
           </el-breadcrumb-item>
          </TransitionGroup >
@@ -28,7 +28,7 @@ const menuLists = computed(() => {
     console.log(props.path)
     return [{name:props.path}]
   } else if(Array.isArray(props.path)) {
-    return props.path.map((item) => ({ name: item.meta.title, path: item.path }))
+    return props.path
   }
 })
 </script>
@@ -44,5 +44,4 @@ const menuLists = computed(() => {
   opacity: 0;
   transform: translateX(30px);
 }
-
 </style>

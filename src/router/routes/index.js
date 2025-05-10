@@ -4,6 +4,7 @@ import Layout from "@v/Layout";
 import Login from "@v/Login";
 import Catagory from "@v/Category";
 import Page404 from "@v/Page404";
+import SubCategory from "@v/SubCategory";
 // 创建路由配置对象
 const routes = [
   {
@@ -19,13 +20,40 @@ const routes = [
         },
         component: Home,
       },
+      // {
+      //   path: "/category/:id",
+      //   name: "category",
+      //   meta: {
+      //     title: "分类页",
+      //   },
+      //   component: Catagory,
+      // },
       {
-        path: "/category/:id",
+        path: "/category",
         name: "category",
         meta: {
           title: "分类页",
         },
-        component: Catagory,
+        // component: Catagory,
+        redirect: "/category/:id",
+        children: [
+          {
+            path: "/category/sub/:id",
+            name: "sub-category",
+            meta: {
+              title: "子分类页",
+            },
+            component: SubCategory,
+          },
+          {
+            path: "/category/:id",
+            name: "category-id",
+            meta: {
+              title: "分类页",
+            },
+            component: Catagory,
+          },
+        ],
       },
     ],
   },
