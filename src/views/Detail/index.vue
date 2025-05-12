@@ -61,7 +61,7 @@
               <gf-sku :goods="goods" @change="skuChange"/>
 
               <!-- 数据组件 -->
-              <!-- <el-input-number :min="1" v-model="count" @change="countChange" /> -->
+              <el-input-number :min="1" v-model="count" @change="countChange" />
 
               <!-- 按钮组件 -->
               <div>
@@ -117,7 +117,8 @@ import { getGoodsDetail } from "@/apis/category";
 import { useRoute } from "vue-router";
 import GfBreadcrumb from "@c/gf-breadcrumb.vue";
 import GoodHot from "./components/DetailHot.vue";
-import GfImageView from '@c/gf-image-view.vue'
+import {useCartStore} from "@s/cartStore";
+import { ElMessage } from "element-plus";
 const route = useRoute();
 const goods = ref([]);
 const menuLists = ref([]);
@@ -140,7 +141,7 @@ onMounted(async () => {
   ];
 });
 
-const addCart = () => {};
+const cartStore  = useCartStore()
 
 //sku规格被操作时
 let skuObj = {}
@@ -148,6 +149,27 @@ const skuChange = (sku) => {
     console.log(sku);
     skuObj = sku
 }
+const count = ref(1)
+const countChange = (val) => {
+  count.value = val
+}
+
+
+const addCart = () => {
+  if(!skuObj.skuId){
+    return ElMessage.error("请选择商品规格")
+  }
+  cartStore.addCart({
+    id:goods.value.id,
+    name:goods.value.name,
+    picture:goods.value.mainPictures[0],
+    price:skuObj.price,
+    count:count.value,
+    skuId:skuObj.skuId,
+    specsText: skuObj.specsText,
+    selected:true
+  })
+};
 </script>
 
 <style lang="scss" scoped>
