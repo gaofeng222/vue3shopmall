@@ -25,7 +25,7 @@
                 <el-input v-model="form.account" />
               </el-form-item>
               <el-form-item prop="password" label="密码">
-                <el-input v-model="form.password" />
+                <el-input v-model="form.password" type="password"/>
               </el-form-item>
               <el-form-item prop="agree" label-width="22px">
                 <el-checkbox size="large" v-model="form.agree">
@@ -51,7 +51,10 @@
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import LayoutCopyright from '@v/Layout/components/LayoutCopyright.vue'
-
+import { useUserStore } from '@s/userStore'
+import { useRouter } from 'vue-router'
+const userStore = useUserStore()
+const router = useRouter()
 // 1.准备表单对象
 const form = ref({
   account: '',
@@ -88,9 +91,16 @@ const formRef = ref(null)
 
 
 const doLogin = () => {
-  formRef.value.validate((valid) => {
+  formRef.value.validate(async (valid) => {
     if (valid) {
-      ElMessage.success('登录成功')
+      const { account, password } = form.value
+      const ret = await userStore.loginSystem({
+        account,
+        password
+      })
+      router.replace({ path: '/' })
+      ElMessage.success("登录成功！")
+      
     } else {
       return false
     }

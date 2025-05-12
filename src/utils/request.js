@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ElMessage } from "element-plus";
 
 const instance = axios.create({
   baseURL: "https://pcapi-xiaotuxian-front-devtest.itheima.net", //换成自己的后端地址
@@ -31,6 +32,11 @@ instance.interceptors.response.use(
   },
   (error) => {
     // 对响应错误做点什么
+    ElMessage({
+      message: error.response.data.message || "请求失败",
+      type: "warning",
+      duration: 2000,
+    });
     return Promise.reject(error);
   }
 );
