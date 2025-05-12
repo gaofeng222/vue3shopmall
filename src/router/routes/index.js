@@ -5,6 +5,7 @@ import Login from "@v/Login";
 import Catagory from "@v/Category";
 import Page404 from "@v/Page404";
 import SubCategory from "@v/SubCategory";
+import GoodsDetail from "@v/Detail";
 // 创建路由配置对象
 const routes = [
   {
@@ -54,6 +55,14 @@ const routes = [
             component: Catagory,
           },
         ],
+      },
+      {
+        path: "/detail/:id",
+        name: "detail-id",
+        meta: {
+          title: "详情页",
+        },
+        component: GoodsDetail,
       },
     ],
   },

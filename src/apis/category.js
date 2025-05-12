@@ -13,3 +13,12 @@ export function categoryLists2(params) {
 export function getSubCategoryFilter(data) {
   return http.post("category/goods/temporary", { ...data });
 }
+
+// 获取商品详情
+export function getGoodsDetail(params) {
+  return http.get("goods", { params });
+}
+
+export function getGoodsHot(params) {
+  return http.get("goods/hot", { params });
+}
