@@ -9,7 +9,10 @@ export const useUserStore = defineStore("userState", {
   actions: {
     // 获取数据列表
     async fetchData() {},
-    clearUserInfo() {},
+    clearUserInfo() {
+      this.userInfo = {};
+      // TODO:重置所有的路由信息，刷新页面
+    },
 
     async loginSystem(data) {
       console.log("🚀 ~ loginSystem ~ data:", data);

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ElMessage } from "element-plus";
+import { useUserStore } from "@s/userStore";
 
 const instance = axios.create({
   baseURL: "https://pcapi-xiaotuxian-front-devtest.itheima.net", //换成自己的后端地址
@@ -11,6 +12,11 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   (config) => {
+    const userStore = useUserStore();
+    const token = userStore.userInfo.token;
+    if (token) {
+      config.headers["Authorization"] = `Bearer ${token}`;
+    }
     // 在发送请求之前做些什么
     return config;
   },
