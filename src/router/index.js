@@ -6,6 +6,10 @@ import routes from "./routes";
 const router = createRouter({
   history: createWebHashHistory(), // 使用hash模式
   routes, // 传入路由配置数组
+  scrollBehavior() {
+    // 页面切换时滚动行为
+    return { top: 0 };
+  },
 });
 
 function createRouterApp(app) {

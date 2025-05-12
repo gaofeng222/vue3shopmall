@@ -6,6 +6,7 @@
     <HomeNew />
     <HomeHot />
     <HomeProduct />
+     <el-backtop />
 </template>
 <script setup>
 import HomeCategory from './components/HomeCategory.vue'

@@ -12,6 +12,8 @@
                 <GoodsItem v-for="good in goodList" :good="good" :key="good.id" />
             </div>
         </div> 
+
+        <el-backtop />
     </div>
 </template>
 
@@ -25,7 +27,7 @@ import GoodsItem from '@v/Home/components/GoodsItem'
 const menuInfoData = ref([])
 
 const queryData = reactive({
-   categoryId: route.params.id,
+    categoryId: route.params.id,
     page: 1,
     pageSize: 20,
     sortField: 'publishTime'
@@ -64,8 +66,10 @@ const tabLists = [{
 
 
 const tabChange = (val)=>{
+    goodList.value = []
     console.log("🚀 ~ tabChange ~ val:", val)
     queryData.sortField = val
+    queryData.page = 1
     getSubCategoryList()
 
 }
@@ -90,7 +94,9 @@ const load = async ()=>{
     display: flex;
     flex-wrap: wrap;
     padding: 0 10px;
-    justify-content: center;
+    margin: 0 auto;
+    gap:0 30px;
+    /* justify-content: center; */
 }
 
 </style>

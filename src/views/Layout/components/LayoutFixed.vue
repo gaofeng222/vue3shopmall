@@ -1,10 +1,11 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
+import {useRoute } from 'vue-router'
 // vueUse
 import { useScroll } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
 const { y } = useScroll(window)
-
+const route = useRoute()
 import { useCategoryStore } from '@/store/modules/categoryStore'
 const cateStore = useCategoryStore()
 
@@ -13,27 +14,27 @@ const { categoryList } = storeToRefs(cateStore)
 const isShow = computed(() => {
   return y.value > 90
 })
-
+// TODO: 激活样式
+const activeClass = ref('active')
 </script>
 
 <template>
     <transition name="fade-up" mode="out-in">
       <div class="app-header-sticky" v-show="isShow">
         <div class="container">
-            <RouterLink class="logo" to="/" />
+            <router-link class="logo" to="/" />
             <!-- 导航区域 -->
             <ul class="app-header-nav">
                 <li class="home">
-                    <RouterLink to="/">首页</RouterLink>
+                    <router-link to="/">首页</router-link>
                 </li>
                 <li class="home" v-for="item in categoryList" :key="item.id">
-                    <RouterLink active-class="active" :to="`/category/${item.id}`">{{ item.name }}</RouterLink>
+                    <router-link :active-class="activeClass" :to="`/category/${item.id}`">{{ item.name }}</router-link>
                 </li>
             </ul>
-
             <div class="right">
-                <RouterLink to="/">品牌</RouterLink>
-                <RouterLink to="/">专题</RouterLink>
+                <router-link to="/">品牌</router-link>
+                <router-link to="/">专题</router-link>
             </div>
         </div>
     </div>
