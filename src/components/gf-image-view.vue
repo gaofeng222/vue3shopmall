@@ -1,6 +1,5 @@
 <template>
   {{left}} {{top}}
-        {{elementX}} {{elementY}}
     <div class="goods-image">
         <!-- 左侧大图-->
         <div class="middle" ref="target">
