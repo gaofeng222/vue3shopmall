@@ -1,5 +1,4 @@
 <template>
-  {{left}} {{top}}
     <div class="goods-image">
         <!-- 左侧大图-->
         <div class="middle" ref="target">
