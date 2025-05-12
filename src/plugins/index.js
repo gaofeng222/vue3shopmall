@@ -1,3 +1,5 @@
+import createCustomPlugins from "@c";
+
 const customPlugin = {
   install(app) {
     console.log("🚀 ~ install ~ app:", app);
@@ -8,6 +10,8 @@ const customPlugin = {
       author: "wang",
       date: new Date().toLocaleString(),
     });
+
+    createCustomPlugins(app);
   },
 };
 

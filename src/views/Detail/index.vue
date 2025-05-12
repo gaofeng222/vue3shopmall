@@ -58,7 +58,7 @@
                 </dl>
               </div>
               <!-- sku组件 -->
-              <!-- <XtxSku :goods="goods" @change="skuChange"/> -->
+              <gf-sku :goods="goods" @change="skuChange"/>
 
               <!-- 数据组件 -->
               <!-- <el-input-number :min="1" v-model="count" @change="countChange" /> -->
@@ -141,6 +141,13 @@ onMounted(async () => {
 });
 
 const addCart = () => {};
+
+//sku规格被操作时
+let skuObj = {}
+const skuChange = (sku) => {
+    console.log(sku);
+    skuObj = sku
+}
 </script>
 
 <style lang="scss" scoped>
