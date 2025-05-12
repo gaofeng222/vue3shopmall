@@ -13,6 +13,7 @@
       </div>
     </header>
     <section class="login-section">
+      <img class="login-bg"  src="@/assets/images/login-bg.png" alt="" />
       <div class="wrapper">
         <nav>
           <a href="javascript:;">账户登录</a>
@@ -39,18 +40,7 @@
     </section>
 
     <footer class="login-footer">
-      <div class="container">
-        <p>
-          <a href="javascript:;">关于我们</a>
-          <a href="javascript:;">帮助中心</a>
-          <a href="javascript:;">售后服务</a>
-          <a href="javascript:;">配送与验收</a>
-          <a href="javascript:;">商务合作</a>
-          <a href="javascript:;">搜索推荐</a>
-          <a href="javascript:;">友情链接</a>
-        </p>
-        <p>CopyRight &copy; 大兔鲜儿</p>
-      </div>
+      <LayoutCopyright />
     </footer>
   </div>
 </template>
@@ -60,7 +50,7 @@
 // 表单校验（账户名+密码）
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
-
+import LayoutCopyright from '@v/Layout/components/LayoutCopyright.vue'
 
 // 1.准备表单对象
 const form = ref({
@@ -94,8 +84,18 @@ const rules = {
   ]
 }
 
+const formRef = ref(null)
 
-const doLogin = () => {}
+
+const doLogin = () => {
+  formRef.value.validate((valid) => {
+    if (valid) {
+      ElMessage.success('登录成功')
+    } else {
+      return false
+    }
+  })
+}
 </script>
 
 
@@ -118,7 +118,8 @@ const doLogin = () => {}
       height: 132px;
       width: 100%;
       text-indent: -9999px;
-      background: url("@/assets/images/logo.png") no-repeat center 18px / contain;
+      // 多个背景图片，后面的覆盖前面的
+      background:  url("@/assets/images/logo.png") no-repeat center 18px / contain;
     }
   }
 
@@ -145,10 +146,12 @@ const doLogin = () => {}
 }
 
 .login-section {
-  background: url('@/assets/images/login-bg.png') no-repeat center / cover;
   height: 488px;
   position: relative;
-
+  .login-bg{
+    width: 100%;
+    height: 100%;
+  }
   .wrapper {
     width: 380px;
     background: #fff;
