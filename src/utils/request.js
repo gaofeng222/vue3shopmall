@@ -1,6 +1,7 @@
 import axios from "axios";
 import { ElMessage } from "element-plus";
 import { useUserStore } from "@s/userStore";
+import { router } from "@/router";
 
 const instance = axios.create({
   baseURL: "https://pcapi-xiaotuxian-front-devtest.itheima.net", //换成自己的后端地址
@@ -37,12 +38,24 @@ instance.interceptors.response.use(
     }
   },
   (error) => {
+    console.log(22222);
     // 对响应错误做点什么
-    ElMessage({
-      message: error.response.data.message || "请求失败",
-      type: "warning",
-      duration: 2000,
-    });
+    if (error.response && error.response.status === 401) {
+      ElMessage({
+        message: "登录过期，请重新登录",
+        type: "warning",
+        duration: 2000,
+      });
+      const userStore = useUserStore();
+      userStore.clearUserInfo();
+      router.push("/login");
+    } else {
+      ElMessage({
+        message: error.response.data.message || "请求失败",
+        type: "warning",
+        duration: 2000,
+      });
+    }
     return Promise.reject(error);
   }
 );

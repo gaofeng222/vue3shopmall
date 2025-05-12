@@ -9,7 +9,7 @@ const confirm = () => {
   // 1.清除用户信息 触发action
   userStore.clearUserInfo()
   // 2.跳转到登录页
-  router.push('/login')
+  router.replace('/login')
 }
 
 </script>

@@ -21,6 +21,7 @@ setupStore(app);
 
 // 安装路由
 createRouter(app);
+console.log(1111111);
 
 // 注册全局指令
 createDirectives(app);

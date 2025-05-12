@@ -3,7 +3,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import routes from "./routes";
 
 // 创建路由实例
-const router = createRouter({
+export const router = createRouter({
   history: createWebHashHistory(), // 使用hash模式
   routes, // 传入路由配置数组
   scrollBehavior() {
