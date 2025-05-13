@@ -148,6 +148,7 @@ let skuObj = {}
 const skuChange = (sku) => {
     console.log(sku);
     skuObj = sku
+    console.log("🚀 ~ skuChange ~ skuObj:", skuObj)
 }
 const count = ref(1)
 const countChange = (val) => {

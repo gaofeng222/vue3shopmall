@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue'
 import { Search } from '@element-plus/icons-vue'
 import { storeToRefs } from 'pinia'
-// import HeaderCart from './HeaderCart.vue'
+import HeaderCart from './HeadCart.vue'
 
 //导入方法
 import { useCategoryStore } from '@/store/modules/categoryStore'
@@ -39,7 +39,7 @@ const activeClass = ref('active')
                 />
             </div>
             <!-- 头部购物车 -->
-            <!-- <HeaderCart/> -->
+            <HeaderCart/>
         </div>
     </header>
 </template>
