@@ -64,6 +64,14 @@ const routes = [
         },
         component: GoodsDetail,
       },
+      {
+        path: "/cartlist",
+        name: "cartlist",
+        meta: {
+          title: "购物车",
+        },
+        component: () => import("@v/CartList"),
+      },
     ],
   },
   { path: "/login", component: Login },
