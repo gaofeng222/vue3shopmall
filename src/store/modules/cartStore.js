@@ -26,7 +26,6 @@ export const useCartStore = defineStore("cart", {
   },
   actions: {
     addCart(goods) {
-      this.cartList.push(goods);
       // 登录后才加入购物车
       if (this.isLogin) {
         // 加入购物车接口
