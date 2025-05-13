@@ -102,7 +102,7 @@ const activeClass = ref('active')
         position: relative;
         line-height: 32px;
         :deep(.el-input){
-             width: 240px;
+             width: 170px;
         }
     }
 
