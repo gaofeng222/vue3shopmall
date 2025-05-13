@@ -129,17 +129,14 @@ nextTick(() => {
     margin: 20px auto 0;
     display: flex;
     background: #fff;
-    margin-top: 20px;
     height: 80px;
     align-items: center;
     font-size: 16px;
     justify-content: space-between;
     padding: 0 30px;
-
     .xtx-checkbox {
       color: #999;
     }
-
     .batch {
       a {
         margin-left: 20px;
@@ -150,6 +147,7 @@ nextTick(() => {
       font-size: 18px;
       margin-right: 20px;
       font-weight: bold;
+      color:$priceColor;
     }
   }
 }
