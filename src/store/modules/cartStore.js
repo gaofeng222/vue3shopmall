@@ -1,10 +1,12 @@
 import { defineStore } from "pinia";
 import { useUserStore } from "./userStore";
+import { toRaw } from "vue";
 
 export const useCartStore = defineStore("cart", {
   state: () => ({
     cartList: [],
     allPrice: 0,
+    // selectedList: [],
   }),
   getters: {
     allCount(state) {
@@ -22,6 +24,24 @@ export const useCartStore = defineStore("cart", {
     isLogin() {
       const userStore = useUserStore();
       return userStore.userInfo?.token;
+    },
+    selectedPrice(state) {
+      return state.cartList.reduce((total, item) => {
+        if (item.selected) {
+          return total + item.count * item.price;
+        } else {
+          return total;
+        }
+      }, 0);
+    },
+    selectedCount(state) {
+      return state.cartList.reduce((total, item) => {
+        if (item.selected) {
+          return total + item.count;
+        } else {
+          return total;
+        }
+      }, 0);
     },
   },
   actions: {
@@ -54,6 +74,27 @@ export const useCartStore = defineStore("cart", {
     },
     clearCart() {
       this.cartList = [];
+    },
+    handleSelected(value) {
+      console.log("🚀 ~ handleSelected ~ value:", value);
+      console.log(
+        "🚀 ~ handleSelected ~ this.cartList.length:",
+        this.cartList.length
+      );
+      if (!value.length) {
+        this.cartList.forEach((item) => {
+          item.selected = false;
+        });
+      } else if (value.length === this.cartList.length) {
+        this.cartList.forEach((item) => {
+          item.selected = true;
+        });
+      } else {
+        this.cartList.forEach((item) => {
+          console.log("🚀 ~ this.cartList.forEach ~ item:", toRaw(item));
+          item.selected = value.includes(toRaw(item)) ? true : false;
+        });
+      }
     },
   },
   persist: true,
