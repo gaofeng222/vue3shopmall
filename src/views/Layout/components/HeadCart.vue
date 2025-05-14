@@ -97,6 +97,7 @@ const cartStore = useCartStore()
 
                 .center {
                     padding: 0 10px;
+                    width: 150px;
                     .name {
                         font-size: 16px;
                     }
