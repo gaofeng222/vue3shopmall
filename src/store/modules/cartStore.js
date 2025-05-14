@@ -7,7 +7,6 @@ export const useCartStore = defineStore("cart", {
   state: () => ({
     cartList: [],
     allPrice: 0,
-    // selectedList: [],
   }),
   getters: {
     allCount(state) {
