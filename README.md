@@ -44,3 +44,8 @@ https://www.apifox.cn/apidoc/shared/c05cb8d7-e591-4d9c-aff8-11065a0ec1de/api-671
 ## 静态资源获取
 
 https://github.com/ShiJieCloud/vue-rabbit
+
+## 沙箱支付最新账号&密码
+
+scobys4865@sandbox.com
+11111

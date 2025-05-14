@@ -72,6 +72,31 @@ const routes = [
         },
         component: () => import("@v/CartList"),
       },
+      {
+        path: "/checkout",
+        name: "checkout",
+        meta: {
+          title: "结算页",
+        },
+        component: () => import("@v/Checkout"),
+      },
+      {
+        path: "pay",
+        name: "pay",
+        meta: {
+          title: "支付页",
+        },
+        component: () => import("@v/Pay"),
+      },
+      {
+        // 付款成功后返回的路径
+        path: "/paycallback",
+        name: "payback",
+        meta: {
+          title: "支付成功页",
+        },
+        component: () => import("@v/Pay/PayBack.vue"),
+      },
     ],
   },
   { path: "/login", component: Login },
