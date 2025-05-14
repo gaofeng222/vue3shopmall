@@ -23,6 +23,7 @@ defineProps({
   padding: 20px 30px;
   text-align: center;
   transition: all .5s;
+  box-sizing: border-box;
   &:hover{
     transform: translate3d(0,-3px,0);
     box-shadow: 0 3px 8px rgb(0 0 0 / 20%);

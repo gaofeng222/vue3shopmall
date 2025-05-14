@@ -21,14 +21,6 @@ const routes = [
         },
         component: Home,
       },
-      // {
-      //   path: "/category/:id",
-      //   name: "category",
-      //   meta: {
-      //     title: "分类页",
-      //   },
-      //   component: Catagory,
-      // },
       {
         path: "/category",
         name: "category",
@@ -96,6 +88,35 @@ const routes = [
           title: "支付成功页",
         },
         component: () => import("@v/Pay/PayBack.vue"),
+      },
+      {
+        path: "/member",
+        name: "member",
+        meta: {
+          title: "会员中心",
+        },
+        component: () => import("@v/Member"),
+        redirect: "/member/user",
+        children: [
+          {
+            path: "/member/order",
+            name: "order",
+            meta: {
+              title: "订单列表",
+            },
+            //
+            component: () => import("@v/Member/components/Order.vue"),
+          },
+          // 个人中心
+          {
+            path: "/member/user",
+            name: "info",
+            meta: {
+              title: "个人中心",
+            },
+            component: () => import("@v/Member/components/User.vue"),
+          },
+        ],
       },
     ],
   },
