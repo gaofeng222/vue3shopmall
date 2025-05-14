@@ -26,6 +26,10 @@ axios.patch(`/edit/${id}`, {
 });
 ```
 
+## 页面预览地址
+
+[小兔仙效果网站](https://gaofeng222.github.io/vue3shopmall/#/home)
+
 ## 更改远程仓库地址的步骤
 
 - git remote -v // 查看远程仓库地址
