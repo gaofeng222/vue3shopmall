@@ -5,7 +5,7 @@ import { router } from "@/router";
 
 const instance = axios.create({
   baseURL: "https://pcapi-xiaotuxian-front-devtest.itheima.net", //换成自己的后端地址
-  timeout: 5000,
+  timeout: 50000,
   headers: {
     "Content-Type": "application/json",
   },

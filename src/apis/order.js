@@ -14,3 +14,17 @@ export function submitOrder(data) {
 export function getOrderDetail(id) {
   return http.get(`member/order/${id}`);
 }
+
+// 获取订单列表
+/*
+params: {
+	orderState:0,
+  page:1,
+  pageSize:2
+}
+*/
+export const getOrderLists = (params) => {
+  return http.get("member/order", {
+    params,
+  });
+};
