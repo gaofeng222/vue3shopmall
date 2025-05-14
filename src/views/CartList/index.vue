@@ -104,7 +104,7 @@ const handleSelect = (val) => {
 const cartListTableRef = ref(null);
 
 nextTick(() => {
-  console.log("🚀 ~ nextTick ~ cartListTableRef:", cartStore.cartList);
+  // 初始化勾选状态，防止勾选状态丢失问题。
   cartStore.cartList.forEach((item) => {
     if (item.selected) {
       cartListTableRef.value.toggleRowSelection(item, true);

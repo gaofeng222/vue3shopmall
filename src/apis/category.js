@@ -22,3 +22,22 @@ export function getGoodsDetail(params) {
 export function getGoodsHot(params) {
   return http.get("goods/hot", { params });
 }
+
+// 加入购物车
+export function addToCart(data) {
+  return http.post("member/cart", data);
+}
+
+// 购物车列表
+export function getCardLists() {
+  return http.get("member/cart");
+}
+
+// 删除购物车,写法与其他两种方式不同，需要多加一层data层封装数据
+export function deleteCart(datas) {
+  return http.delete("member/cart", {
+    data: {
+      ids: datas,
+    },
+  });
+}

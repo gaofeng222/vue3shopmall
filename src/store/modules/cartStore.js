@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { useUserStore } from "./userStore";
 import { toRaw } from "vue";
+import { addToCart, getCardLists, deleteCart } from "@/apis/category";
 
 export const useCartStore = defineStore("cart", {
   state: () => ({
@@ -45,10 +46,13 @@ export const useCartStore = defineStore("cart", {
     },
   },
   actions: {
-    addCart(goods) {
+    async addCart(goods) {
+      const { skuId, count } = goods;
       // 登录后才加入购物车
       if (this.isLogin) {
         // 加入购物车接口
+        await addToCart({ skuId, count });
+        this.updateNewList();
       } else {
         // 未登录，加入本地存储
         const item = this.cartList.find((item) => goods.skuId === item.skuId);
@@ -62,8 +66,8 @@ export const useCartStore = defineStore("cart", {
     async delCart(skuId) {
       if (this.isLogin) {
         // 调用接口实现接口购物车中的删除功能
-        await delCartAPI([skuId]);
-        // updateNewList();
+        await deleteCart([skuId]);
+        this.updateNewList();
       } else {
         // 思路：
         // 1. 找到要删除项的下标值 - splice
@@ -72,15 +76,15 @@ export const useCartStore = defineStore("cart", {
         this.cartList.splice(idx, 1);
       }
     },
+
+    async updateNewList() {
+      const res = await getCardLists();
+      this.cartList = res.result;
+    },
     clearCart() {
       this.cartList = [];
     },
     handleSelected(value) {
-      console.log("🚀 ~ handleSelected ~ value:", value);
-      console.log(
-        "🚀 ~ handleSelected ~ this.cartList.length:",
-        this.cartList.length
-      );
       if (!value.length) {
         this.cartList.forEach((item) => {
           item.selected = false;
@@ -91,7 +95,6 @@ export const useCartStore = defineStore("cart", {
         });
       } else {
         this.cartList.forEach((item) => {
-          console.log("🚀 ~ this.cartList.forEach ~ item:", toRaw(item));
           item.selected = value.includes(toRaw(item)) ? true : false;
         });
       }

@@ -1,5 +1,5 @@
 <template>
-  <el-popover placement="bottom" :width="400" trigger="click">
+  <el-popover placement="bottom" :width="400">
     <template #default>
       <div class="layer" v-if="cartStore.cartList.length">
         <div class="list">
