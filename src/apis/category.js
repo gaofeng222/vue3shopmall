@@ -41,3 +41,8 @@ export function deleteCart(datas) {
     },
   });
 }
+
+// 合并购物车
+export function mergeCart(data) {
+  return http.post("member/cart/merge", data);
+}
